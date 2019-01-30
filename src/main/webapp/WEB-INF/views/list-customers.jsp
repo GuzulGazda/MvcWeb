@@ -73,6 +73,7 @@
 	</div>
 	<div class="footer">
 		<p>Footer</p>
+                <p class="profile-description">${quotation.author}</p>
 	</div>
 </body>
 

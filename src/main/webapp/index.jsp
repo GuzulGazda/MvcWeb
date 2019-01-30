@@ -33,6 +33,8 @@
                             <div class="profile-content">
                                 <h3 class="profile-title">Калинчук</h3>
                                 <p class="profile-description">Ігор Володимирович</p>
+                                
+                                
                             </div>
                         </div>
                     </div>

@@ -32,7 +32,6 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	@Transactional
 	public Customer getCustomer(int id) throws ResourceNotFoundException {
-//                return customerRepository.getOne(id);
 		return customerRepository.findById(id).orElseThrow(
 				() -> new ResourceNotFoundException(id));
 	}

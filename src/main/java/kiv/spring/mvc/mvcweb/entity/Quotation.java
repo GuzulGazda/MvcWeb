@@ -18,10 +18,10 @@ public class Quotation implements Serializable{
 	@Column(name="id")
 	private int id;
 	
-	@Column(name="message")
+	@Column(name = "message", nullable = false, length=5000)
 	private String message;
 	
-	@Column(name="author")
+	@Column(name="author", nullable = false, length=1000)
 	private String author;
 	
 	

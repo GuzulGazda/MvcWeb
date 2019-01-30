@@ -37,7 +37,6 @@ public class CustomerController {
         theModel.addAttribute("customers", theCustomers);
         List<Quotation> quotations = quotationService.getQuotations();
         Quotation quotation = getRandomItem(quotations);
-        System.out.println("IHOR IS HERE!!!!!"  + quotation.getAuthor());
         theModel.addAttribute("quotation", quotation);
         return "list-customers";
     }

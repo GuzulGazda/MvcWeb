@@ -13,25 +13,24 @@ import org.springframework.web.servlet.view.JstlView;
 /**
  * @author Ramesh Fadatare
  */
-
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = { "kiv.spring.mvc.mvcweb.controller" })
-public class WebMvcConfig implements WebMvcConfigurer{
+@ComponentScan(basePackages = {"kiv.spring.mvc.mvcweb.controller"})
+public class WebMvcConfig implements WebMvcConfigurer {
 
-	@Bean
-	public InternalResourceViewResolver resolver() {
-		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-		resolver.setViewClass(JstlView.class);
-		resolver.setPrefix("/WEB-INF/views/");
-		resolver.setSuffix(".jsp");
-		return resolver;
-	}
-	
-	@Override
+    @Bean
+    public InternalResourceViewResolver resolver() {
+        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+        resolver.setViewClass(JstlView.class);
+        resolver.setPrefix("/WEB-INF/views/");
+        resolver.setSuffix(".jsp");
+        return resolver;
+    }
+
+    @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry
-          .addResourceHandler("/resources/**")
-          .addResourceLocations("/resources/"); 
+                .addResourceHandler("/resources/**")
+                .addResourceLocations("/resources/");
     }
 }

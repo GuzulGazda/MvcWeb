@@ -1,11 +1,14 @@
 package kiv.spring.mvc.mvcweb.service;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import kiv.spring.mvc.mvcweb.entity.Quotation;
 import kiv.spring.mvc.mvcweb.exception.ResourceNotFoundException;
 import kiv.spring.mvc.mvcweb.repository.QuotationRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -38,5 +41,13 @@ public class QuotationServiceImpl implements QuotationService {
     @Transactional
     public void deleteQuotation(int theId) {
         quotationRepository.deleteById(theId);
+    }
+    
+    @Override
+    @Transactional
+    public Quotation getRandomQuotation(){
+        List<Quotation> allQuotations = quotationRepository.findAll();
+        Collections.shuffle(allQuotations);
+        return allQuotations.get(0);
     }
 }

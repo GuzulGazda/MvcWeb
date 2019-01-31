@@ -11,6 +11,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Volton Free Responsive Template</title>
         <meta name="description" content="">
+        
+        <link href="http://allfont.ru/allfont.css?fonts=hermes" rel="stylesheet" type="text/css" />
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel='stylesheet' href='<c:url value="/resources/css/normalize.css" />' type='text/css' media='all' />
@@ -20,10 +22,7 @@
         <link rel='stylesheet' href='<c:url value="/resources/sass/main.scss" />' type='text/scss' media='all' />
 
         <script src='<c:url value="/resources/js/vendor/modernizr-2.6.2.min.js" />'></script>
-        <link rel='stylesheet' href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" type='text/css' media='all' />
-        <link rel='stylesheet' href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/css/bootstrap-select.min.css" type='text/css' media='all' />
-        <link rel='stylesheet' href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/0.8.2/css/flag-icon.min.css" type='text/css' media='all' />
-
+        
 
     </head>
     <body>
@@ -93,10 +92,10 @@
 
         <div class="banner-bg" id="top">
             <!-- language-bar -->
-            <ul class="languagepicker roundborders">
-                <a href="#en"><li><img src="http://i64.tinypic.com/fd60km.png"/>En</li></a>
-                <a href="#nl"><li><img src="http://i65.tinypic.com/2d0kyno.png"/>Ua</li></a>
-            </ul>
+            <div class="roundborders">
+                <a href="?lang=en"><img src='<c:url value="/resources/img/USA_Flag_big.png" />'/></a>&nbsp;&nbsp;
+                <a href="?lang=ua"><img src='<c:url value="/resources/img/Ukraine_Flag_big.png" />'/></a>
+            </div>
             <!-- .language-bar -->
             <div class="banner-overlay"></div>
             <div class="welcome-text">
@@ -121,7 +120,7 @@
                     <div class="page-section" id="about">
                         <div class="row">
                             <div class="col-md-12">
-                                <h4 class="widget-title"><fmt:message key="label.lang.en" /></h4>
+                                <h4 class="widget-title"><fmt:message key="label.Learn.About.Me" /></h4>
                                 <div class="about-image">
                                     <img src='<c:url value="/resources/img/8.jpg" />' alt="about me">
                                 </div>

@@ -570,17 +570,8 @@ h3.profile-title {
 }
 
 /*---------------------------------------------------------
- 6. Language picker
+ 6. Language bar
 -------------------------------------------------------- */
-
-* {
-    font-family: arial;
-}
-
-body {
-    background-color: #333;
-}
-
 .roundborders {
     position:absolute;
     top:10px;
@@ -589,11 +580,3 @@ body {
     z-index: 5;
 }
 
-.large:hover {
-    /* 
-    don't forget the 1px border!
-    The first language is 40px heigh, 
-    the others are 41px
-    */
-    height: 245px;
-}

@@ -1,6 +1,8 @@
 package kiv.spring.mvc.mvcweb.controller;
 
 import java.util.List;
+import java.util.Locale;
+import javax.servlet.http.HttpServletRequest;
 import kiv.spring.mvc.mvcweb.entity.Quotation;
 import kiv.spring.mvc.mvcweb.exception.ResourceNotFoundException;
 import kiv.spring.mvc.mvcweb.service.QuotationService;
@@ -27,8 +29,10 @@ public class QuotationController {
 
 
     @GetMapping("/list")
-    public String listQuotations(Model theModel) {
+    public String listQuotations(Model theModel, HttpServletRequest request) {
         List<Quotation> theQuotations = quotationService.getQuotations();
+        Locale curLocale = (Locale) request.getAttribute("org.springframework.web.servlet.i18n.CookieLocaleResolver.LOCALE");
+        theModel.addAttribute("curLocale", curLocale);
         theModel.addAttribute("quotations", theQuotations);
         return "list-quotations";
     }

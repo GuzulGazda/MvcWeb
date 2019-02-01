@@ -10,25 +10,17 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Volton Free Responsive Template</title>
-        <meta name="description" content="">
-        
+        <meta name="description" content="">        
         <link href="http://allfont.ru/allfont.css?fonts=hermes" rel="stylesheet" type="text/css" />
-
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel='stylesheet' href='<c:url value="/resources/css/normalize.css" />' type='text/css' media='all' />
         <link rel='stylesheet' href='<c:url value="/resources/css/font-awesome.css" />' type='text/css' media='all' />
         <link rel='stylesheet' href='<c:url value="/resources/css/bootstrap.min.css" />' type='text/css' media='all' />
         <link rel='stylesheet' href='<c:url value="/resources/css/templatemo-style.css" />' type='text/css' media='all' />
-        <link rel='stylesheet' href='<c:url value="/resources/sass/main.scss" />' type='text/scss' media='all' />
 
         <script src='<c:url value="/resources/js/vendor/modernizr-2.6.2.min.js" />'></script>
-        
-
     </head>
     <body>
-
-
-
         <div class="responsive-header visible-xs visible-sm">
             <div class="container">
                 <div class="row">
@@ -57,7 +49,6 @@
                 </div>
             </div>
         </div>
-
 
         <!-- SIDEBAR -->
         <div class="sidebar-menu hidden-xs hidden-sm">
@@ -89,12 +80,12 @@
         </div> <!-- .sidebar-menu -->
 
 
-
         <div class="banner-bg" id="top">
             <!-- language-bar -->
             <div class="roundborders">
-                <a href="?lang=en"><img src='<c:url value="/resources/img/USA_Flag_big.png" />'/></a>&nbsp;&nbsp;
-                <a href="?lang=ua"><img src='<c:url value="/resources/img/Ukraine_Flag_big.png" />'/></a>
+                <a href="?lang=en"><img src='<c:url value="/resources/img/locale_en.png" />'/></a>&nbsp;&nbsp;
+                <a href="?lang=ua"><img src='<c:url value="/resources/img/locale_ua.png" />'/></a>
+
             </div>
             <!-- .language-bar -->
             <div class="banner-overlay"></div>
@@ -104,26 +95,35 @@
             </div>
         </div>
 
-
-
-
         <!-- MAIN CONTENT -->
         <div class="main-content">
-
-
             <div class="fluid-container">
 
                 <div class="content-wrapper">
-
 
                     <!-- ABOUT -->
                     <div class="page-section" id="about">
                         <div class="row">
                             <div class="col-md-12">
-                                <h4 class="widget-title"><fmt:message key="label.Learn.About.Me" /></h4>
+                                <h4 class="widget-title">Learn About Me</h4>
                                 <div class="about-image">
                                     <img src='<c:url value="/resources/img/8.jpg" />' alt="about me">
                                 </div>
+                                <h3>Parameters is </h3>
+                                <c:forEach var="tempName" items="${names}">
+                                    <p> "${tempName}" </p>
+                                </c:forEach>
+                                <h3>Request Attributes is </h3>
+                                <c:forEach var="tempNameR" items="${reqNames}">
+                                    <p> "${tempNameR}" </p>
+                                </c:forEach>
+                                <h3>Request Parameters is </h3>
+                                <c:forEach var="tempNameRA" items="${reqParamNames}">
+                                    <p> "${tempNameRA}" </p>
+                                </c:forEach>
+                                    
+                                    <h3>Current locale is ${curLocale}</h3>
+                                
                                 <p>Volton is free website design from <span class="blue">template</span><span class="green">mo</span>. You can use this template for any purpose. Please tell your friends about it. Thank you. Credit goes to <a rel="nofollow" href="http://unsplash.com" target="_parent">Unsplash</a> for images used in this design. You can <strong>change menu icons</strong> by checking <a rel="nofollow" href="http://fontawesome.info/font-awesome-icon-world-map/" target="_parent">Font Awesome</a> (version 4). Example: <strong>&lt;i class=&quot;fa fa-camera&quot;&gt;&lt;/i&gt;</strong></p>
                                 <hr>
                             </div>

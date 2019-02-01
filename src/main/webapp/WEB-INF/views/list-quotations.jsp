@@ -71,6 +71,7 @@
 	</div>
 	<div class="footer">
 		<p>Footer</p>
+                <h3>Current locale is ${curLocale}</h3>
                 <p class="profile-description">${quotation.author}</p>
 	</div>
 </body>

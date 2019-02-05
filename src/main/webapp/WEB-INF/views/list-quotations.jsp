@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Volton Free Responsive Template</title>
+        <title>Quotation Management</title>
         <meta name="description" content="">        
         <link href="http://allfont.ru/allfont.css?fonts=hermes" rel="stylesheet" type="text/css" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,63 +24,66 @@
         <%@include file="../jspf/header.jspf" %>
         <%@include file="../jspf/sidebarOuther.jspf" %>
         <%@include file="../jspf/banner.jspf" %>
-        <div class="container">
-            <div class="col-md-offset-1 col-md-10">
-                <h3 class="text-center">Quotation Management</h3>
-                <hr />
+        <div class="main-content">
+            <div class="fluid-container">
 
-                <input type="button" value="Add Quotation"
-                       onclick="window.location.href = 'showForm'; return false;"
-                       class="btn btn-primary" /> <br />
-                <br />
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <div class="panel-title">Quotation List</div>
-                    </div>
-                    <div class="panel-body">
-                        <table class="table table-striped table-bordered">
-                            <tr>
-                                <th abbr=""style="min-width: 130px">Author</th>
-                                <th>Message</th>
-                                <th style="min-width: 130px">Action</th>
-                            </tr>
+                <div class="content-wrapper">
+                    <div class="col-md-offset-1 col-md-10">
+                        <br/>
+                        <h4 class="widget-title"><fmt:message key="label.Learn.About.Me" /></h4>
+                        <hr />
 
-                            <!-- loop over and print our quotations -->
-                            <c:forEach var="tempQuotation" items="${quotations}">
+                        <input type="button" value='<fmt:message key="label.Add.Quotation" />'
+                               onclick="window.location.href = 'showForm'; return false;"
+                               class="btn btn-primary" /> <br />
+                        <br />
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <div class="panel-title"><fmt:message key="label.Quotation.List" /></div>
+                            </div>
+                            <div class="panel-body">
+                                <table class="table table-striped table-bordered">
+                                    <tr>
+                                        <th abbr=""style="min-width: 130px"><fmt:message key="label.Quotation.Author" /></th>
+                                        <th><fmt:message key="label.Quotation.Message" /></th>
+                                        <th style="min-width: 130px"><fmt:message key="label.Quotation.Action" /></th>
+                                    </tr>
 
-                                <!-- construct an "update" link with quotation id -->
-                                <c:url var="updateLink" value="/quotation/updateForm">
-                                    <c:param name="quotationId" value="${tempQuotation.id}" />
-                                </c:url>
+                                    <!-- loop over and print our quotations -->
+                                    <c:forEach var="tempQuotation" items="${quotations}">
 
-                                <!-- construct an "delete" link with quotation id -->
-                                <c:url var="deleteLink" value="/quotation/delete">
-                                    <c:param name="quotationId" value="${tempQuotation.id}" />
-                                </c:url>
+                                        <!-- construct an "update" link with quotation id -->
+                                        <c:url var="updateLink" value="/quotation/updateForm">
+                                            <c:param name="quotationId" value="${tempQuotation.id}" />
+                                        </c:url>
 
-                                <tr>
-                                    <td>${tempQuotation.author}</td>
-                                    <td>${tempQuotation.message}</td>
+                                        <!-- construct an "delete" link with quotation id -->
+                                        <c:url var="deleteLink" value="/quotation/delete">
+                                            <c:param name="quotationId" value="${tempQuotation.id}" />
+                                        </c:url>
+
+                                        <tr>
+                                            <td>${tempQuotation.author}</td>
+                                            <td>${tempQuotation.message}</td>
 
 
-                                    <td>
-                                        <!-- display the update link --> <a href="${updateLink}">Update</a>
-                                        | <a href="${deleteLink}"
-                                             onclick="if (!(confirm('Are you sure you want to delete this quotation?')))
-                                                         return false">Delete</a>
-                                    </td>
-
-                                </tr>
-
-                            </c:forEach>
-
-                        </table>
-
+                                            <td>
+                                                <!-- display the update link --> <a href="${updateLink}"><fmt:message key="label.Quotation.Update" /></a>
+                                                | <a href="${deleteLink}"
+                                                     onclick="if (!(confirm('<fmt:message key="label.Quotation.Warning" />')))
+                                                         return false"><fmt:message key="label.Quotation.Delete" /></a>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-
         </div>
+
+
         <div class="footer">
             <p>Footer</p>
             <h3>Current locale is ${curLocale}</h3>

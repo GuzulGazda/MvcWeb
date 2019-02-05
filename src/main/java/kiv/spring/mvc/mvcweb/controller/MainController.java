@@ -5,10 +5,7 @@
  */
 package kiv.spring.mvc.mvcweb.controller;
 
-import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.logging.Level;
@@ -19,7 +16,6 @@ import kiv.spring.mvc.mvcweb.entity.Quotation;
 import kiv.spring.mvc.mvcweb.exception.ResourceNotFoundException;
 import kiv.spring.mvc.mvcweb.service.QuotationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;

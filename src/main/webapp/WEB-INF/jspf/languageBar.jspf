@@ -1,0 +1,15 @@
+            <!-- language-bar -->
+            <div class="roundborders">
+                    <c:forEach var="tempLocale" items="${localeChoices}">
+                        <c:choose>
+                            <c:when test ="${pageContext.response.locale eq tempLocale.key}"> 
+                            <img src='<c:url value='/resources/img/locale_${tempLocale.key}.png' />'/>&nbsp;&nbsp;
+                        </c:when>    
+                        <c:otherwise>
+                            <a href='?lang=${tempLocale.key}'><img src='<c:url value='/resources/img/locale_${tempLocale.key}.png' />'/></a>&nbsp;&nbsp;
+                        </c:otherwise>
+                    </c:choose>
+                </c:forEach>
+
+            </div>
+            <!-- .language-bar -->

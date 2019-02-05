@@ -1,0 +1,28 @@
+        <!-- SIDEBAR -->
+        <div class="sidebar-menu hidden-xs hidden-sm">
+            <div class="top-section">
+                <div class="profile-image">
+                    <img src='<c:url value="/resources/img/profile.jpg" />' alt="Volton">
+                </div>
+                <h3 class="profile-title">Kalinchuck</h3>
+                <p class="profile-description">Ihor</p>
+            </div> <!-- top-section -->
+            <div class="main-navigation">
+                <ul class="navigation">
+                    <li><a href='${pageContext.request.contextPath}#top'><i class="fa fa-globe"></i><fmt:message key="label.Welcome" /></a></li>
+                    <li><a href='${pageContext.request.contextPath}#about'><i class="fa fa-pencil"></i><fmt:message key="label.Learn.About.Me" /></a></li>
+                    <li><a href='${pageContext.request.contextPath}#projects'><i class="fa fa-paperclip"></i><fmt:message key="label.My.Gallery" /></a></li>
+                    <li><a href='${pageContext.request.contextPath}#contact'x><i class="fa fa-link"></i><fmt:message key="label.Contact.Me" /></a></li>
+                </ul>
+            </div> <!-- .main-navigation -->
+<!--            <div class="social-icons">
+                <ul>
+                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                    <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+                    <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                </ul>
+            </div>  .social-icons -->
+        </div> <!-- .SIDEBAR -->

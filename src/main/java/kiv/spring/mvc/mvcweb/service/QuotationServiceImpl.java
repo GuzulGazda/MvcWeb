@@ -1,6 +1,5 @@
 package kiv.spring.mvc.mvcweb.service;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import kiv.spring.mvc.mvcweb.entity.Quotation;
@@ -8,7 +7,6 @@ import kiv.spring.mvc.mvcweb.exception.ResourceNotFoundException;
 import kiv.spring.mvc.mvcweb.repository.QuotationRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -47,6 +45,13 @@ public class QuotationServiceImpl implements QuotationService {
     @Transactional
     public Quotation getRandomQuotation(){
         List<Quotation> allQuotations = quotationRepository.findAll();
+        if (allQuotations.isEmpty()){ // database doesn't contains any quotations
+            // TODO get default quotation from properties file
+            Quotation quotation = new Quotation();
+            quotation.setAuthor("Coco Chanel");
+            quotation.setMessage("Success is most often achieved by those who don't know that failure is inevitable.");
+            return quotation;
+        }
         Collections.shuffle(allQuotations);
         return allQuotations.get(0);
     }

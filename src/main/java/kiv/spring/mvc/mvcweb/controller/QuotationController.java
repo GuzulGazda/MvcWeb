@@ -47,6 +47,8 @@ public class QuotationController {
         ModelAndView mv = new ModelAndView();
         addQuotation(mv);
         addLocale(mv);
+        Quotation quotation = new Quotation();
+        mv.getModel().put("quotation", quotation);
         mv.setViewName("quotation-form");
         return mv;
     }
@@ -64,6 +66,7 @@ public class QuotationController {
         ModelAndView mv = new ModelAndView();
         addQuotation(mv);
         addLocale(mv);
+        mv.getModel().put("quotation", theQuotation);
         mv.setViewName("quotation-form");
         return mv;
     }
@@ -84,18 +87,18 @@ public class QuotationController {
     }
 
     private void addQuotation(ModelAndView mv) {
-        Quotation quotation;
+        Quotation quotationToShow;
         try {
-            quotation = quotationService.getRandomQuotation();
+            quotationToShow = quotationService.getRandomQuotation();
         } catch (ResourceNotFoundException ex) {
             // add default quotation
             // TODO
-            quotation = new Quotation();
-            quotation.setAuthor("Coco Chanel");
-            quotation.setMessage("Success is most often achieved by those who don't know that failure is inevitable.");
+            quotationToShow = new Quotation();
+            quotationToShow.setAuthor("Coco Chanel");
+            quotationToShow.setMessage("Success is most often achieved by those who don't know that failure is inevitable.");
             java.util.logging.Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        mv.getModel().put("quotation", quotation);
+        mv.getModel().put("quotationToShow", quotationToShow);
     }
 
 }

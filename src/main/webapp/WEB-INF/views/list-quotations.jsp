@@ -30,54 +30,60 @@
                 <div class="content-wrapper">
                     <div class="col-md-offset-1 col-md-10">
                         <br/>
-                        <h4 class="widget-title"><fmt:message key="label.Learn.About.Me" /></h4>
+                        <h4 class="widget-title"><fmt:message key="label.Quotation.Management" /></h4>
                         <hr />
 
                         <input type="button" value='<fmt:message key="label.Add.Quotation" />'
                                onclick="window.location.href = 'showForm'; return false;"
                                class="btn btn-primary" /> <br />
                         <br />
-                        <div class="panel panel-info">
-                            <div class="panel-heading">
-                                <div class="panel-title"><fmt:message key="label.Quotation.List" /></div>
-                            </div>
-                            <div class="panel-body">
-                                <table class="table table-striped table-bordered">
-                                    <tr>
-                                        <th abbr=""style="min-width: 130px"><fmt:message key="label.Quotation.Author" /></th>
-                                        <th><fmt:message key="label.Quotation.Message" /></th>
-                                        <th style="min-width: 130px"><fmt:message key="label.Quotation.Action" /></th>
-                                    </tr>
+                        <c:choose>
+                            <c:when test ="${empty quotations}">
+                                <div class="panel-title"><fmt:message key="label.Quotation.List.Empty" /></div>
+                            </c:when>
+                            <c:otherwise>
+                                <div class="panel panel-info">
+                                    <div class="panel-heading">
+                                        <div class="panel-title"><fmt:message key="label.Quotation.List" /></div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <table class="table table-striped table-bordered">
+                                            <tr>
+                                                <th abbr=""style="min-width: 130px"><fmt:message key="label.Quotation.Author" /></th>
+                                                <th><fmt:message key="label.Quotation.Message" /></th>
+                                                <th style="min-width: 130px"><fmt:message key="label.Quotation.Action" /></th>
+                                            </tr>
 
-                                    <!-- loop over and print our quotations -->
-                                    <c:forEach var="tempQuotation" items="${quotations}">
+                                            <!-- loop over and print our quotations -->
+                                            <c:forEach var="tempQuotation" items="${quotations}">
 
-                                        <!-- construct an "update" link with quotation id -->
-                                        <c:url var="updateLink" value="/quotation/updateForm">
-                                            <c:param name="quotationId" value="${tempQuotation.id}" />
-                                        </c:url>
+                                                <!-- construct an "update" link with quotation id -->
+                                                <c:url var="updateLink" value="/quotation/updateForm">
+                                                    <c:param name="quotationId" value="${tempQuotation.id}" />
+                                                </c:url>
 
-                                        <!-- construct an "delete" link with quotation id -->
-                                        <c:url var="deleteLink" value="/quotation/delete">
-                                            <c:param name="quotationId" value="${tempQuotation.id}" />
-                                        </c:url>
+                                                <!-- construct an "delete" link with quotation id -->
+                                                <c:url var="deleteLink" value="/quotation/delete">
+                                                    <c:param name="quotationId" value="${tempQuotation.id}" />
+                                                </c:url>
 
-                                        <tr>
-                                            <td>${tempQuotation.author}</td>
-                                            <td>${tempQuotation.message}</td>
+                                                <tr>
+                                                    <td>${tempQuotation.author}</td>
+                                                    <td>${tempQuotation.message}</td>
+                                                    <td>
+                                                        <!-- display the update link --> <a href="${updateLink}"><fmt:message key="label.Quotation.Update" /></a>
+                                                        | <a href="${deleteLink}"
+                                                             onclick="if (!(confirm('<fmt:message key="label.Quotation.Warning" />')))
+                                                                         return false"><fmt:message key="label.Quotation.Delete" /></a>
+                                                    </td>
+                                                </tr>
+                                            </c:forEach>
+                                        </table>
+                                    </div>
+                                </div>
+                            </c:otherwise>
+                        </c:choose>
 
-
-                                            <td>
-                                                <!-- display the update link --> <a href="${updateLink}"><fmt:message key="label.Quotation.Update" /></a>
-                                                | <a href="${deleteLink}"
-                                                     onclick="if (!(confirm('<fmt:message key="label.Quotation.Warning" />')))
-                                                         return false"><fmt:message key="label.Quotation.Delete" /></a>
-                                            </td>
-                                        </tr>
-                                    </c:forEach>
-                                </table>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

@@ -8,7 +8,6 @@ package kiv.spring.mvc.mvcweb.controller;
 import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Map;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -27,20 +26,11 @@ public class MainController {
     private QuotationService quotationService;
 
     @GetMapping("/")
-    public ModelAndView getTestData(HttpSession session, HttpServletRequest request) {
+    public ModelAndView getTestData(HttpSession session, HttpServletRequest request) throws ResourceNotFoundException {
         ModelAndView mv = new ModelAndView();
-        Quotation quotation;
-        try {
-            quotation = quotationService.getRandomQuotation();
-        } catch (ResourceNotFoundException ex) {
-            // add default quotation
-            // TODO
-            quotation = new Quotation();
-            quotation.setAuthor("Coco Chanel");
-            quotation.setMessage("Success is most often achieved by those who don't know that failure is inevitable.");
-            Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        mv.getModel().put("quotation", quotation);
+        Quotation quotationToShow = quotationService.getRandomQuotation();
+        
+        mv.getModel().put("quotationToShow", quotationToShow);
         
         Map<String, String> localeChoices = new LinkedHashMap<>();
         Locale l = Locale.US;

@@ -1,7 +1,7 @@
-        <div class="banner-bg" id="top">
-            <div class="banner-overlay"></div>
-            <div class="welcome-text">
-                <h2>${quotation.author}</h2>
-                <h5>${quotation.message}</h5>
-            </div>
-        </div>
+<div class="banner-bg" id="top">
+    <div class="banner-overlay"></div>
+    <div class="welcome-text">
+        <h2>${quotationToShow.author}</h2>
+        <h5>${quotationToShow.message}</h5>
+    </div>
+</div>

@@ -6,6 +6,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.logging.Level;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import kiv.spring.mvc.mvcweb.entity.Quotation;
 import kiv.spring.mvc.mvcweb.exception.ResourceNotFoundException;
 import kiv.spring.mvc.mvcweb.service.QuotationService;
@@ -54,13 +55,27 @@ public class QuotationController {
     }
 
     @PostMapping("/saveQuotation")
-    public String saveQuotation(@ModelAttribute("quotation") Quotation theQuotation) {
+    public String saveQuotation(HttpServletRequest request, @ModelAttribute("quotation") Quotation theQuotation) {
+        
+        System.out.println("\nIHOR REQUEST start");
+        Map<String, String[]> params = request.getParameterMap();
+        for (Map.Entry<String, String[]> entry : params.entrySet()) {
+            String key = entry.getKey();
+            String[] value = entry.getValue();
+            System.out.print("\tParam: " + key);
+            System.out.println("\tVal: " + value[0]);
+        }
+        
+        System.out.println("\nIHOR REQUEST end");
         quotationService.saveQuotation(theQuotation);
         return "redirect:/quotation/list";
     }
 
     @GetMapping("/updateForm")
-    public ModelAndView showFormForUpdate(@RequestParam("quotationId") int theId) throws ResourceNotFoundException {
+    public ModelAndView showFormForUpdate(@RequestParam("quotationId") int theId, HttpServletRequest request,
+            HttpServletResponse response) throws ResourceNotFoundException {
+        
+        response.setCharacterEncoding("UTF-8");
         Quotation theQuotation = quotationService.getQuotation(theId);
         // TODO - how to update Quotation?
         ModelAndView mv = new ModelAndView();

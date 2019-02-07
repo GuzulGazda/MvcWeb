@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=Windows-1252"	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="Windows-1252">
+        <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title><fmt:message key="label.Add.Quotation" /></title>
         <meta name="description" content="">        
@@ -39,7 +39,7 @@
                                 <div class="panel-title"><fmt:message key="label.Add.Quotation" /></div>
                             </div>
                             <div class="panel-body">
-                                <form:form action="saveQuotation" cssClass="form-horizontal" method="post" modelAttribute="quotation">
+                                <form:form action="saveQuotation" cssClass="form-horizontal" method="post" modelAttribute="quotation" acceptCharset="UTF-8">
                                     <!-- need to associate this data with quotation id -->
                                     <form:hidden path="id" />
 
@@ -52,15 +52,17 @@
                                     <div class="form-group">
                                         <label for="lastname" class="col-md-3 control-label"><fmt:message key="label.Quotation.Author" /></label>
                                         <div class="col-md-9">
-                                            <form:input path="author" cssClass="form-control" />
+
+                                            <form:input path="author" value='${quotation.author}' cssClass="form-control"  />
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <!-- Button -->
                                         <div class="col-md-offset-3 col-md-9">
                                             <form:button cssClass="btn btn-primary"><fmt:message key="label.Quotation.Submit" /></form:button>
-                                            </div>
+                                            <input type="button" cssClass="btn btn-primary" style="float: right" value='<fmt:message key="label.Quotation.Cancel" />' onClick="javascript:history.go(-1)"/>
                                         </div>
+                                    </div>
                                 </form:form>
                             </div>
                         </div>

@@ -56,17 +56,6 @@ public class QuotationController {
 
     @PostMapping("/saveQuotation")
     public String saveQuotation(HttpServletRequest request, @ModelAttribute("quotation") Quotation theQuotation) {
-        
-        System.out.println("\nIHOR REQUEST start");
-        Map<String, String[]> params = request.getParameterMap();
-        for (Map.Entry<String, String[]> entry : params.entrySet()) {
-            String key = entry.getKey();
-            String[] value = entry.getValue();
-            System.out.print("\tParam: " + key);
-            System.out.println("\tVal: " + value[0]);
-        }
-        
-        System.out.println("\nIHOR REQUEST end");
         quotationService.saveQuotation(theQuotation);
         return "redirect:/quotation/list";
     }

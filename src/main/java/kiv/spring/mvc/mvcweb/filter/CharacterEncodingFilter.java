@@ -1,4 +1,4 @@
-package kiv.spring.mvc.mvcweb.config;
+package kiv.spring.mvc.mvcweb.filter;
 
 import java.io.IOException;
 import javax.servlet.Filter;
@@ -15,13 +15,11 @@ public class CharacterEncodingFilter implements Filter {
     @Override
     public void init(FilterConfig config) throws ServletException {
         // NOOP.
-        System.out.println("FILTER CONFIG INIT");
     }
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         request.setCharacterEncoding("UTF-8");
-        System.out.println("FILTER CONFIG DOFILTER");
         chain.doFilter(request, response);
     }
 

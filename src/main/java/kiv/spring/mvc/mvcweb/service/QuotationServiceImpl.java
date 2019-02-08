@@ -40,7 +40,7 @@ public class QuotationServiceImpl implements QuotationService {
     public void deleteQuotation(int theId) {
         quotationRepository.deleteById(theId);
     }
-    
+
     @Override
     @Transactional
     public Quotation getRandomQuotation(){

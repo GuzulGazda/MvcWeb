@@ -37,7 +37,7 @@ public class QuotationController {
         ModelAndView mv = new ModelAndView();
         List<Quotation> quotations = quotationService.getQuotations();
         mv.getModel().put("quotations", quotations);
-        addQuotation(mv);
+//        addQuotation(mv);
         addLocale(mv);
         mv.setViewName("list-quotations");
         return mv;
@@ -46,7 +46,7 @@ public class QuotationController {
     @GetMapping("/showForm")
     public ModelAndView showFormForAdd(Model theModel) {
         ModelAndView mv = new ModelAndView();
-        addQuotation(mv);
+//        addQuotation(mv);
         addLocale(mv);
         Quotation quotation = new Quotation();
         mv.getModel().put("quotation", quotation);
@@ -68,7 +68,7 @@ public class QuotationController {
         Quotation theQuotation = quotationService.getQuotation(theId);
         // TODO - how to update Quotation?
         ModelAndView mv = new ModelAndView();
-        addQuotation(mv);
+//        addQuotation(mv);
         addLocale(mv);
         mv.getModel().put("quotation", theQuotation);
         mv.setViewName("quotation-form");
@@ -89,20 +89,4 @@ public class QuotationController {
         localeChoices.put(l.getLanguage(), l.getDisplayLanguage());
         mv.getModel().put("localeChoices", localeChoices);
     }
-
-    private void addQuotation(ModelAndView mv) {
-        Quotation quotationToShow;
-        try {
-            quotationToShow = quotationService.getRandomQuotation();
-        } catch (ResourceNotFoundException ex) {
-            // add default quotation
-            // TODO
-            quotationToShow = new Quotation();
-            quotationToShow.setAuthor("Coco Chanel");
-            quotationToShow.setMessage("Success is most often achieved by those who don't know that failure is inevitable.");
-            java.util.logging.Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        mv.getModel().put("quotationToShow", quotationToShow);
-    }
-
 }

@@ -16,6 +16,6 @@ public interface QuotationService {
 
 	public void deleteQuotation(int theId) throws ResourceNotFoundException;
         
-        public Quotation getRandomQuotation() throws ResourceNotFoundException;
+        public Quotation getRandomQuotation();
 	
 }

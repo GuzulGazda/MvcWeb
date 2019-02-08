@@ -28,9 +28,9 @@ public class MainController {
     @GetMapping("/")
     public ModelAndView getTestData(HttpSession session, HttpServletRequest request) throws ResourceNotFoundException {
         ModelAndView mv = new ModelAndView();
-        Quotation quotationToShow = quotationService.getRandomQuotation();
-        
-        mv.getModel().put("quotationToShow", quotationToShow);
+//        Quotation quotationToShow = quotationService.getRandomQuotation();
+//        
+//        mv.getModel().put("quotationToShow", quotationToShow);
         
         Map<String, String> localeChoices = new LinkedHashMap<>();
         Locale l = Locale.US;

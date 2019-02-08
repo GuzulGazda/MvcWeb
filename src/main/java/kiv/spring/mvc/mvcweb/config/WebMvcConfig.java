@@ -1,6 +1,8 @@
 package kiv.spring.mvc.mvcweb.config;
 
-import java.util.Locale;
+import kiv.spring.mvc.mvcweb.filter.AddQuotationFilter;
+import kiv.spring.mvc.mvcweb.service.QuotationService;
+import kiv.spring.mvc.mvcweb.service.QuotationServiceImpl;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 
@@ -14,7 +16,6 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
-import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
@@ -41,8 +42,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
                 .addResourceHandler("/resources/**")
                 .addResourceLocations("/resources/");
     }
-    
-        @Bean("messageSource")
+
+    @Bean("messageSource")
     public MessageSource messageSource() {
         ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
         messageSource.setBasenames("languages/messages");
@@ -60,5 +61,10 @@ public class WebMvcConfig implements WebMvcConfigurer {
         LocaleChangeInterceptor localeChangeInterceptor = new LocaleChangeInterceptor();
         localeChangeInterceptor.setParamName("lang");
         registry.addInterceptor(localeChangeInterceptor);
+    }
+    
+    @Bean("quotationService")
+    public QuotationService quotationService() {
+        return new QuotationServiceImpl();
     }
 }
